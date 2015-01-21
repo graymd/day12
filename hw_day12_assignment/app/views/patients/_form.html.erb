@@ -1,3 +1,13 @@
+<%= form_for(@patient) do |f| %>
+  <% if @patient.errors.any? %>
+    <% @patient.errors.full_messages.each do |message| %>
+      <%= message %>
+      <br>
+    <% end %>
+  <% end %>
+<% end %>
+
+
 <br>
 <%= form_for @patient do |f| %>
   <strong><%= f.label :first_name %></strong>
@@ -28,3 +38,7 @@
 
 <%= link_to "Cancel", patients_path %>
 <%= link_to "Return to Main", root_path %>
+
+
+
+

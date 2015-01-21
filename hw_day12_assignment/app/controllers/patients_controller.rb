@@ -14,7 +14,13 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.create patient_params
-    redirect_to patients_path
+      if @patient.save
+      flash[:notice] = 'Patient info was successfully saved.'
+      redirect_to patients_path
+    else
+      flash[:error] = 'Patient info was NOT successfully saved.'
+      render :new
+    end
   end
 
   def edit
@@ -23,15 +29,43 @@ class PatientsController < ApplicationController
 
   def update
     @patient = Patient.find params[:id]
-    @patient.update_attributes patient_params
-    redirect_to patients_path
+    if @patient.update_attributes patient_params
+      flash[:notice] = 'Patient info was successfully updated.'
+      redirect_to patients_path
+    else
+      flash[:notice] = 'Patient info was successfully updated.'
+      render :edit
+    end
+
   end
 
   def destroy
-  @patient = Patient.find params[:id]
-  @patient.delete
-  redirect_to patients_path
+    @patient = Patient.find params[:id]
+    if @patient.delete
+      flash[:notice] = 'Patient info was successfully deleted.'
+      redirect_to patients_path
+    else
+      flash[:notice] = 'Patient info was NOT successfully deleted.'
+    end
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 private
