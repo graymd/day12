@@ -1,5 +1,6 @@
 <%= form_for(@patient) do |f| %>
   <% if @patient.errors.any? %>
+  <p id="notice"><%= notice %></p>
     <% @patient.errors.full_messages.each do |message| %>
       <%= message %>
       <br>

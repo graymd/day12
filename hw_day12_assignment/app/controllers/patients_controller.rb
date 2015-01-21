@@ -33,7 +33,7 @@ class PatientsController < ApplicationController
       flash[:notice] = 'Patient info was successfully updated.'
       redirect_to patients_path
     else
-      flash[:notice] = 'Patient info was successfully updated.'
+      flash[:notice] = 'Patient info was NOT successfully updated.'
       render :edit
     end
 
